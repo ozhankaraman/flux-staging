@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: python-helloworld-staging
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: helm
+      sourceRef:
+        kind: GitRepository
+        name: python-helloworld
+  interval: 30s
+  targetNamespace: staging
+  values:
+    hpa:
+      enabled: false
+    image:
+      tag: dev-ij0kpqoz
+    ingress:
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      enabled: true
+      hosts:
+      - python-helloworld-dev.192.168.44.100.xip.io
+      path: /
+    replicaCount: 1
+
