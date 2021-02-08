@@ -17,7 +17,7 @@ spec:
     hpa:
       enabled: false
     image:
-      tag: dev-ij0kpqoz
+      tag: dev-p1kttq5n
     ingress:
       annotations:
         kubernetes.io/ingress.class: nginx
